@@ -8,10 +8,11 @@ def get_arate(fname, gran=1e-5):
 
     Args:
         fname: queue trace file name (just 1 queue)
-        gran: sample interval when calculating throughput
+        gran: sample interval when calculating throughput, in seconds
 
     Returns:
         A list, contains the data as: [(time, arriving rate), (time, arriving rate), ..., ]
+        The arriving rate is in Mbps
     '''
     data = open(fname).readlines()
     data = [item.split() for item in data]
