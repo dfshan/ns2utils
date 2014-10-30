@@ -3,6 +3,24 @@
 '''
 import os
 
+def get_enque(fname, oname):
+    ''' Filter the queue trace file, only output enqueue trace 
+
+    Args:
+       fname: queue trace file 
+       oname: output queue tracef file
+
+    Returns: None
+    '''
+    fp = open(fname)
+    data = fp.readlines()
+    fp.close()
+    ofp = open(oname, 'w')
+    for item in data:
+        if item[0] == '+':
+            fp.write(item)
+    fp.close()
+
 def get_arate(fname, gran=1e-5):
     ''' Get arrival rate of a particular queue from ns2's queue trace file
 
