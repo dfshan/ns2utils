@@ -3,6 +3,27 @@
 '''
 import os
 
+def get_qlen(fname, oname):
+    ''' Extract queue length information
+    
+    Extract timestamp, queue length in bytes and queue length in packets
+    from ns2 queue length trace file.
+
+    Args:
+        fname: queue trace file
+        oname: output file
+    ''' 
+
+    fp = open(fname)
+    data = fp.readlines()
+    data = [item.split() for item in data]
+    fp.close()
+    ofp = open(oname, 'w')
+    for item in data:
+        ofp.write('%12.9f %10.3f %6.1f\n' % \
+                (float(item[0]), float(item[3]), float(item[4])))
+    ofp.close()
+
 def get_enque(fname, oname):
     ''' Filter the queue trace file, only output enqueue trace 
 
