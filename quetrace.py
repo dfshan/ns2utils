@@ -18,7 +18,7 @@ def parse_line(line):
     result["type"] = line[4]
     result["size"] = int(line[5])
     result["flags"] = line[6]
-    result["fid"] = line[7]
+    result["fid"] = int(line[7])
     result["src"] = line[8]
     result["dst"] = line[9]
     result["seqnum"] = int(line[10])
